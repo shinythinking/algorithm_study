@@ -1,9 +1,8 @@
 import java.io.*;
-import java.util.Scanner
 
 fun main(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`))){
 
-    var num = readLine() ?: "0"
+    var num = readLine()
     if(num.length == 0 || num[0] == '0' || (num[num.lastIndex] == '0' && num[num.lastIndex - 1] >= '3')){
         print(0)
         System.exit(0)
