@@ -1,16 +1,14 @@
 import java.io.*
-import java.util.*
-import kotlin.Comparator
 
 fun main(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`)) ) {
     val wordsFreq = mutableMapOf<String, Int>()
-    val answer = java.lang.StringBuilder()
+    val answer = StringBuilder()
 
-    val input = readLine().split(" ").map { it.toInt() }
+    val (num, limit) = readLine().split(" ").map { it.toInt() }
 
-    for (i in 1 .. input[0]){
+    for (i in 1 .. num){
         val str = readLine()
-        if(str.length < input[1])
+        if(str.length < limit)
             continue
 
         val cnt = wordsFreq.getOrDefault(str, 0) + 1
