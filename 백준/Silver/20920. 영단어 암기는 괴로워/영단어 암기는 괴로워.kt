@@ -17,7 +17,10 @@ fun main(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in
 
     val wordsList = mutableListOf<String>()
     wordsList.addAll(wordsFreq.keys)
-
+    /*
+    sortWith()는 호출한 인스턴스를 정렬하는 반면
+    sortedWith()는 정렬된 인스턴스를 반환한다.
+     */
     wordsList.sortWith(kotlin.Comparator{ o1, o2 ->
         if(wordsFreq[o1] != wordsFreq[o2])
             wordsFreq[o2]!! - wordsFreq[o1]!!
