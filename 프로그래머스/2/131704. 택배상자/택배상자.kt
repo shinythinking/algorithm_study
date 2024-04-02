@@ -2,32 +2,31 @@ import java.util.*
 
 class Solution {
     fun solution(order: IntArray): Int {
-        var answer = 0
-        var conveyor: ArrayDeque<Int> = ArrayDeque(order.size)
         var stack: ArrayDeque<Int> = ArrayDeque(order.size)
-        for(i in order.size downTo 1){
-            conveyor.push(i)
-        }
-        
+        var conveyor = 1
+        var answer = 0
+
         for(orderNum in order){
             if(orderNum == stack.peek() ?: 0){
                 stack.pop()
                 answer++
-                continue 
-            } else if(conveyor.isEmpty()){
+                continue
+            } else if(conveyor > orderNum){
                 break
             }
-            
-            while(!conveyor.isEmpty()) {
-                val popped = conveyor.pop()
-                if(popped != orderNum){
-                    stack.push(popped)
+
+            while(conveyor <= orderNum) {
+
+                if(conveyor != orderNum){
+                    stack.push(conveyor)
+                    conveyor++
                 } else {
                     answer++
+                    conveyor++
                     break
-                }    
+                }
             }
-            
+
         }
         
         return answer
