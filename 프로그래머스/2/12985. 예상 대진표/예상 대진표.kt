@@ -6,12 +6,8 @@ class Solution {
         var bp = b
         while(ap != bp){
             answer ++
-            if(ap % 2 != 0)
-                ap++
-            if(bp % 2 != 0)
-                bp++
-            ap /= 2
-            bp /= 2
+            ap = (ap + 1) / 2
+            bp = (bp + 1) / 2
         }
 
         return answer
