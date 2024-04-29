@@ -9,8 +9,6 @@ class Solution {
         for(i in dungeons.indices){
             if(visited[i] || dungeons[i][0] > hp)
                 continue
-            if(dungeons[i][1] > hp)
-                continue
             visited[i] = true
             dfs(dungeons, visited, cnt + 1, hp - dungeons[i][1])
             visited[i] = false
