@@ -1,10 +1,10 @@
 # [level 1] 둘만의 암호 - 155652 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/155652) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/155652?language=kotlin) 
 
 ### 성능 요약
 
-메모리: 62.4 MB, 시간: 22.41 ms
+메모리: 61.1 MB, 시간: 6.35 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2024년 05월 01일 14:47:19
+2024년 05월 01일 15:06:21
 
 ### 문제 설명
 
