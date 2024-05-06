@@ -20,6 +20,7 @@ fun main() = with(BufferedReader(InputStreamReader(System.`in`))) {
             for(j in from..to){
                 if(burgerAndPerson[j] == 'H') {
                     burgerAndPerson[j] = 'E'
+                    lastEaten = j
                     answer++
                     break
                 }
