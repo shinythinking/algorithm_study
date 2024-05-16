@@ -10,11 +10,6 @@ class Solution {
         for(truck in truck_weights){
             currentTime++
 
-            while(currentTruck >= bridge_length){
-                currentTruck--
-                currentTime = bridge.poll()
-                currentWeight -= truck_weights[firstIdx++]
-            }
             while(currentWeight + truck > weight){
                 currentTruck--
                 currentTime = Math.max(currentTime, bridge.poll())
