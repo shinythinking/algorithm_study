@@ -10,12 +10,6 @@ class Solution {
     fun solution(picks: IntArray, minerals: Array<String>): Int {
         val maxStone = picks.sum()
         val chunkedMArr = minerals.toList().chunked(5).take(maxStone)
-        for(arr in chunkedMArr){
-            for(i in arr){
-                print("$i ")
-            }
-            println()
-        }
         val pqForMineral = PriorityQueue<Mineral>(compareByDescending<Mineral> {it.dia}.thenByDescending {it.iron}.thenByDescending {it.stone} )
         
         for(arr in chunkedMArr){
