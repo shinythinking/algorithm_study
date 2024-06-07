@@ -2,44 +2,48 @@ import java.util.*
 
 class Solution {
     fun solution(s: String): Int {
-        var answer = 0
-        val parentMap = mapOf('(' to ')','[' to ']','{' to '}')
+        val pairMap = mapOf('(' to ')','[' to ']','{' to '}')
         val stack = ArrayDeque<Char>()
+        var answer = 0
         
         if(s.length % 2 != 0){
             return 0
         }
-        var idx = -1
+        
+        // 1. 살펴볼 index를 의미
+        // 2. 
+        var currentIdx = 0
         var startIdx = 0
         
         while(true){
-            idx++
-            if(idx >= s.length || idx < startIdx){
+            
+            if(currentIdx >= s.length || currentIdx < startIdx){
                 break
             }
-            startIdx = idx
+            startIdx = currentIdx
             while(true){
-                if(parentMap.contains(s[idx])){
-                    stack.push(s[idx])
+                if(pairMap.contains(s[currentIdx])){
+                    stack.push(s[currentIdx])
                 } else {
                     if(stack.isEmpty()){
                         break
                     } else {
-                        if(parentMap[stack.peek()]!! == s[idx]){
+                        if(pairMap[stack.peek()]!! == s[currentIdx]){
                             stack.pop()
                         } else {
                             break
                         }
                     }
                 }
-                idx ++
-                idx %= s.length
-                if(idx == startIdx){
+                currentIdx ++
+                currentIdx %= s.length
+                if(currentIdx == startIdx){
                     answer++
                     break
                 }
             }
             stack.clear()
+            currentIdx++
         }
 
         return answer
