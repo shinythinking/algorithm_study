@@ -1,21 +1,17 @@
 import java.io.*
 import java.util.*
 
-fun main(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`))) {
-	val (num, time) = readLine().split(' ').map{it.toInt()}
+fun main() = with(BufferedReader(InputStreamReader(System.`in`))){
+	val(num, time) = readLine().split(' ').map{ it.toInt() }
+	var answer = 1
 	val times = readLine().split(' ').map{it.toInt()}
-	
-	var cnt = 1
-	var startIdx = times.lastIndex - 1
-	var start = times.last() - time
-	while(startIdx >= 0){
-		if(start <= times[startIdx]){
-			start = times[startIdx] - time
-			startIdx--
-			cnt++
-		} else{
+	var start = times[num - 1] - time
+	for(i in times.lastIndex - 1 downTo 0){
+		if(times[i] < start)
 			break
-		}
+		
+		answer++
+		start = times[i] - time
 	}
-	print(cnt)
+	print(answer)
 }
