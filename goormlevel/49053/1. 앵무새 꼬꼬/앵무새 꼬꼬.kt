@@ -1,18 +1,18 @@
 import java.io.*
 import java.util.*
 
-fun main(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`))) {
+fun main() = with(BufferedReader(InputStreamReader(System.`in`))){
 	var num = readLine().toInt()
 	val answer = StringBuilder()
-	val regex = "[^AEIOUaeiou]".toRegex()
+	val regex = "[^aeiouAEIOU]".toRegex()
 	
 	while(num --> 0){
 		val str = readLine().replace(regex, "")
-		if(str.length == 0){
-			answer.append("???").append('\n')
-		}else{
-			answer.append(str).append('\n')	
-		}
+		answer.append(if(str.length == 0){
+			"???"
+		}else {
+			str
+		}).append('\n')
 	}
 	print(answer)
 }
