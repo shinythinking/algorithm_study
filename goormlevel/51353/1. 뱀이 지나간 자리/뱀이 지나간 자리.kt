@@ -1,25 +1,25 @@
 import java.io.*
 import java.util.*
 
-fun main(args: Array<String>) = with(BufferedReader(InputStreamReader(System.`in`))) {
-	val(row, col) = readLine().split(' ').map{it.toInt()}
+fun main() = with(BufferedReader(InputStreamReader(System.`in`))){
+	val(row, col) = readLine().split(' ').map{ it.toInt() }
 	val board = Array(row){ i ->
-		if(i % 2 == 0)
+		if(i  % 2 == 0){
 			CharArray(col){'#'}
-		else
+		} else{
 			CharArray(col){'.'}
-	}
-	
-	for(i in 1 until row step(2)){
-		if(i % 4 == 1){
-			board[i][col - 1] = '#'
-		} else {
-			board[i][0] = '#'
 		}
 	}
+	for(i in 1 until row step(4)){
+		board[i][board[0].lastIndex] = '#'
+	}
+	for(i in 3 until row step(4)){
+		board[i][0] = '#'
+	}
+	
 	val answer = StringBuilder()
-	for(i in board){
-		answer.append(i.joinToString("")).append('\n')
+	for(row in board){
+		answer.append(row.joinToString("")).append('\n')
 	}
 	print(answer)
 }
