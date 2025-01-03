@@ -1,5 +1,3 @@
-package shinythinking
-
 fun main() {
     val num = readln().toInt()
     if(num == 1){
