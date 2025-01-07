@@ -1,5 +1,3 @@
-package shinythinking
-
 val idxList = mutableListOf<Int>()
 
 fun main() {
@@ -9,7 +7,7 @@ fun main() {
     nums[nums.indexOf(-1)] = alter
     nums.sort()
 
-    preOrderTraversal(size / 2, (size + 1) / 4)
+    postOrder(0, nums.size)
     val answer = buildString{
         idxList.forEach {
             append("${nums[it]} ")
@@ -18,13 +16,11 @@ fun main() {
     println(answer)
 }
 
-fun preOrderTraversal(idx: Int, dist: Int) {
-    if (dist == 0) {
-        idxList.add(idx)
-        return
+fun postOrder(s: Int, e: Int) {
+    val m = (s + e) / 2
+    if(s < e) {
+        postOrder(s, m)
+        postOrder(m + 1, e)
+        idxList.add(m)
     }
-
-    preOrderTraversal(idx - dist, dist/ 2)
-    preOrderTraversal(idx + dist, dist/ 2)
-    idxList.add(idx)
 }
