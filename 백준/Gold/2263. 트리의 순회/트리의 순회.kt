@@ -9,13 +9,14 @@ fun main() {
     val num = reader.readLine().toInt()
     val inOrder = reader.readLine().split(" ").map { it.toInt() }
     val postOrder = reader.readLine().split(" ").map { it.toInt() }
+    val indexMap = inOrder.withIndex().associate { it.value to it.index }
 
     fun divide(from: Int, to: Int, centerIdxOfPost: Int): Node? {
-        if(from > to) return null
+        if (from > to) return null
         val center = postOrder[centerIdxOfPost]
 
         if (from == to) return Node(center)
-        val centerIdxOfIn = inOrder.indexOf(center)
+        val centerIdxOfIn = indexMap[center]!!
         val amountOfR = to - centerIdxOfIn
 
         val left = divide(from, centerIdxOfIn - 1, centerIdxOfPost - amountOfR - 1)
@@ -24,9 +25,9 @@ fun main() {
     }
 
     fun getPreorder(node: Node?): String {
-        val ans = buildString{
-            fun traverse(node: Node?){
-                if(node == null) return
+        val ans = buildString {
+            fun traverse(node: Node?) {
+                if (node == null) return
                 append("${node.data} ")
                 traverse(node.left)
                 traverse(node.right)
